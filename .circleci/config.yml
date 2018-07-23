@@ -4,6 +4,7 @@ jobs:
     ...
   deploy:
     docker:
+      - image: circleci/node:10.6.0 # ...with this image as the primary container; this is where all `steps` will run
       - image: buildpack-deps:trusty
     steps:
       - checkout
