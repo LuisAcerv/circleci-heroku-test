@@ -1,5 +1,8 @@
 version: 2
 jobs:
+  build:
+    docker:
+      - image: circleci/node:10.6.0
   deploy:
     docker:
       - image: buildpack-deps:trusty
