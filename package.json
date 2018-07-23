@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node __tests__/snaptshot_test.js",
+    "test": "jest",
     "start": "node index.js"
   },
   "repository": {
