@@ -1,0 +1,27 @@
+{
+  "name": "circleci-heroku-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuisAcerv/circleci-heroku-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LuisAcerv/circleci-heroku-test/issues"
+  },
+  "homepage": "https://github.com/LuisAcerv/circleci-heroku-test#readme",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.3"
+  },
+  "engines": {
+    "node": "10.6.0"
+  }
+}
