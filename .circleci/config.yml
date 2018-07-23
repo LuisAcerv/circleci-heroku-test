@@ -1,38 +1,27 @@
 version: 2
 jobs:
-  build-job:
+  build:
+    working_directory: ~/mern-starter
     docker:
       - image: circleci/node:10.6.0
+  deploy:
+    docker:
+      - image: buildpack-deps:trusty
     steps:
       - checkout
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
-      - run: yarn install
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-      - run: yarn test
-  deploy-job:
-    docker:
-      - image: circleci/node:7.10
-    steps:
       - run:
           name: Deploy Master to Heroku
           command: |
             git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
-            heroku run node index.js
-            heroku restart
+
 workflows:
   version: 2
   build-deploy:
     jobs:
-      - build-job
-      - deploy-job:
+      - build
+      - deploy:
           requires:
-            - build-job
+            - build
           filters:
             branches:
               only: master
