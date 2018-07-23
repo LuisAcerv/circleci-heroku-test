@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  build-job:
     docker:
       - image: circleci/node:10.6.0
     steps:
@@ -14,25 +14,25 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-- run: yarn test
-  deploy:
+      - run: yarn test
+  deploy-job:
     docker:
-      - image: buildpack-deps:trusty
+      - image: circleci/node:7.10
     steps:
-      - checkout
       - run:
           name: Deploy Master to Heroku
           command: |
             git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
-
+            heroku run node index.js
+            heroku restart
 workflows:
   version: 2
   build-deploy:
     jobs:
-      - build
-      - deploy:
+      - build-job
+      - deploy-job:
           requires:
-            - build
+            - build-job
           filters:
             branches:
               only: master
