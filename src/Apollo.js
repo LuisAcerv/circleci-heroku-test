@@ -30,7 +30,7 @@ const errorLink = onError(errors => {
 });
 
 const httpLink = createHttpLink({
-	uri: `http://${URL}/graphql`,
+	uri: `https://${URL}/graphql`,
 	opts: {
 		credentials: 'same-origin'
 	}
