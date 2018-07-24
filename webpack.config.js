@@ -37,6 +37,6 @@ module.exports = {
 	devServer: {
 		contentBase: './dist',
 		hot: true,
-		istoryApiFallback: { disableDotRule: true }
+		historyApiFallback: true
 	}
 };

@@ -1,8 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { client, store } from './Apollo';
+import { ApolloProvider } from 'react-apollo';
+import { Provider } from 'react-redux';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+import Main from './components/Main';
+import Navbar from './components/Nav';
 
-const title = 'My Minimal React Webpack Babel Setup';
-
-ReactDOM.render(<div>{title}</div>, document.getElementById('app'));
+ReactDOM.render(
+	<ApolloProvider client={client}>
+		<Provider store={store}>
+			<BrowserRouter>
+				<div>
+					<Navbar />
+					<Route exact path="/" component={Main} />
+				</div>
+			</BrowserRouter>
+		</Provider>
+	</ApolloProvider>,
+	document.getElementById('app')
+);
 
 module.hot.accept();
