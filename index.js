@@ -1,14 +1,8 @@
-const express = require('express');
-const cors = require('cors');
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-var app = express();
-app.use(cors());
+const title = 'My Minimal React Webpack Babel Setup';
 
-app.get('/', (req, res) => {
-  res.status(200).send('<h2>Hello World!!!</h2>');
-});
+ReactDOM.render(<div>{title}</div>, document.getElementById('app'));
 
-const PORT = 5000;
-app.listen(process.env.PORT || PORT, () => {
-  console.log(`Server running on port: ${PORT}.`);
-});
+module.hot.accept();

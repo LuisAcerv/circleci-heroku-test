@@ -27,7 +27,7 @@ jobs:
       - run: yarn test
   deploy:
     docker:
-      - image: buildpack-deps:trusty
+      - image: circleci/node:10.6.0
     steps:
       - checkout
       - run:
@@ -44,4 +44,4 @@ workflows:
             - build
           filters:
             branches:
-only: master
+              only: master
