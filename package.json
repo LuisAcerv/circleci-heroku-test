@@ -5,10 +5,9 @@
 	"main": "src/server.js",
 	"scripts": {
 		"test": "jest",
-		"start": "webpack-dev-server -d --config webpack.config.js --progress --colors",
-		"prod": "NODE_ENV=production node server.js",
-		"build": "webpack --config webpack.config.js -p --progress --colors",
-		"postinstall": "webpack --config webpack.config.js -p --progress --colors"
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"eject": "react-scripts eject"
 	},
 	"repository": {
 		"type": "git",
