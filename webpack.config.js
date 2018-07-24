@@ -1,13 +1,27 @@
 const webpack = require('webpack');
 
 module.exports = {
-	entry: ['react-hot-loader/patch', './index.js'],
+	entry: ['react-hot-loader/patch', './src/app.js'],
 	module: {
 		rules: [
 			{
 				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
 				use: ['babel-loader']
+			},
+			{
+				test: /\.css$/,
+				use: ['style-loader', 'css-loader']
+			},
+
+			{
+				test: /\.(png|jpg|gif)$/,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {}
+					}
+				]
 			}
 		]
 	},
@@ -22,6 +36,7 @@ module.exports = {
 	plugins: [new webpack.HotModuleReplacementPlugin()],
 	devServer: {
 		contentBase: './dist',
-		hot: true
+		hot: true,
+		istoryApiFallback: { disableDotRule: true }
 	}
 };
